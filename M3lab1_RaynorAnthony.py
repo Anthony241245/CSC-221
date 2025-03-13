@@ -37,6 +37,7 @@ print(customer_input)
 '''
 iterate through the nested list. Ignore the first inner list.
 For each remaining list, create a Customer object from the list order data
+For those three customer objects, call the display_info method
 
 
 '''
