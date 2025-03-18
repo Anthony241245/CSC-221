@@ -24,36 +24,43 @@ class Customer:
 # print(customer1.display_info())
 
 # Create Empty List to hold csv info
-customers = []
+def main():
 
-with open('customer.csv', newline='') as file:
-    reader = csv.reader(file)
-    for row in reader:
-        customer = Customer(*row)
-        customers.append(customer)
+    add_customer = input("Would you like to add a new Customer: ")
 
-for customer in customers[1:]:
-    print(customer.display_info())
+    while add_customer != "no":
+
+        fname = input("Enter customer's first name: ")
+        lname = input("Enter customer's last name : ")
+        pnumber = input("Enter customer's phone number: ")
+        email = input("Enter customer's email: ")
+        state = input("Enter customer's State: ")
+        address = input("Enter customer's address: ")
+
+        with open('customer.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([fname, lname, pnumber, email, state, address])
+        add_customer = input("Add another customer: ")
+
+        
+     
+    
+
+    customers = []
+
+    with open('customer.csv', newline='') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            customer = Customer(*row)
+            customers.append(customer)
+
+    for customer in customers[1:]:
+        print(customer.display_info())
 
 
-# Get info from user
+    # Get info from user
 
-fname = input("Enter customer's first name: ")
-lname = input("Enter customer's last name : ")
-pnumber = input("Enter customer's phone number: ")
-email = input("Enter customer's email: ")
-state = input("Enter customer's State: ")
-address = input("Enter customer's address: ")
+    
 
-with open('customer.csv', 'a', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow([fname, lname, pnumber, email, state, address])
-
-# TO-DO
-'''
-iterate through the nested list. Ignore the first inner list.
-For each remaining list, create a Customer object from the list order data
-For those three customer objects, call the display_info method
-
-
-'''
+    # call main
+main()
