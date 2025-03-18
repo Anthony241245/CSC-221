@@ -24,14 +24,30 @@ class Customer:
 # print(customer1.display_info())
 
 # Create Empty List to hold csv info
-customer_input = []
+customers = []
 
 with open('customer.csv', newline='') as file:
     reader = csv.reader(file)
     for row in reader:
-        customer_input.append(row)
+        customer = Customer(*row)
+        customers.append(customer)
 
-print(customer_input)
+for customer in customers[1:]:
+    print(customer.display_info())
+
+
+# Get info from user
+
+fname = input("Enter customer's first name: ")
+lname = input("Enter customer's last name : ")
+pnumber = input("Enter customer's phone number: ")
+email = input("Enter customer's email: ")
+state = input("Enter customer's State: ")
+address = input("Enter customer's address: ")
+
+with open('customer.csv', 'a', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow([fname, lname, pnumber, email, state, address])
 
 # TO-DO
 '''
